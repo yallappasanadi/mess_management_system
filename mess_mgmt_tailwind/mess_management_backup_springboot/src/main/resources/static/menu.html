@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Menu - Mess Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-yellow-50 to-rose-50 min-h-screen font-sans">
+  <div class="max-w-4xl mx-auto p-6">
+    <header class="flex justify-between items-center">
+      <h1 class="text-2xl font-semibold">Menu</h1>
+      <div><button onclick="window.close()" class="px-3 py-2 border rounded">Close</button></div>
+    </header>
+
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-semibold">Breakfast</h3>
+        <ul id="breakfastList" class="mt-2 text-sm text-slate-700"></ul>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-semibold">Lunch</h3>
+        <ul id="lunchList" class="mt-2 text-sm text-slate-700"></ul>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-semibold">Dinner</h3>
+        <ul id="dinnerList" class="mt-2 text-sm text-slate-700"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Optionally focus a meal type from query
+    const params = new URLSearchParams(location.search);
+    const meal = params.get('meal');
+    if(meal){
+      // scroll to the meal block (simple)
+      setTimeout(()=> {
+        if(meal === 'Breakfast') document.getElementById('breakfastList').scrollIntoView();
+        if(meal === 'Lunch') document.getElementById('lunchList').scrollIntoView();
+        if(meal === 'Dinner') document.getElementById('dinnerList').scrollIntoView();
+      }, 200);
+    }
+    renderMenu();
+  </script>
+</body>
+</html>

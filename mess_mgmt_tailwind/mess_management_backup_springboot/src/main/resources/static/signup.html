@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign Up - Mess Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-emerald-50 to-cyan-50 min-h-screen font-sans flex items-center justify-center">
+  <div class="w-full max-w-md bg-white p-6 rounded-xl shadow">
+    <h2 class="text-xl font-semibold">Sign Up</h2>
+    <form id="signupForm" class="mt-4 space-y-3">
+      <input id="suName" placeholder="Full name" class="w-full p-2 border rounded" required />
+      <input id="suEmail" type="email" placeholder="Email" class="w-full p-2 border rounded" required />
+      <input id="suPassword" type="password" placeholder="Password" class="w-full p-2 border rounded" required />
+      <div class="flex justify-end gap-2">
+        <button type="button" onclick="window.close()" class="px-4 py-2 border rounded">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded">Create</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('This is a frontend demo. Sign-up is not connected to backend.');
+    });
+  </script>
+</body>
+</html>

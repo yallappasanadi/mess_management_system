@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mess Management - Home</title>
+  <!-- Tailwind CDN (play) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-50 min-h-screen font-sans">
+  <nav class="bg-white/80 backdrop-blur sticky top-0 z-10 shadow">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-tr from-indigo-600 to-blue-500 rounded-full flex items-center justify-center text-white font-bold">MS</div>
+        <div>
+          <h1 class="text-xl font-semibold text-slate-800">Mess Management System</h1>
+          <p class="text-sm text-slate-500">College Mess Attendance & Menu</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="openPage('signin.html')" class="px-4 py-2 rounded-lg bg-white border hover:shadow">Sign In</button>
+        <button onclick="openPage('signup.html')" class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">Sign Up</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto p-6">
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="col-span-2 bg-white rounded-xl p-6 shadow-lg">
+        <h2 class="text-2xl font-semibold text-slate-800">Overview</h2>
+        <p class="text-sm text-slate-500 mt-1">Quick summary of today's attendance</p>
+
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl border hover:shadow cursor-pointer" onclick="openPage('students.html?filter=all')">
+            <div class="text-sm text-slate-500">Total Students</div>
+            <div id="totalStudents" class="text-3xl font-bold text-indigo-600 mt-2">0</div>
+          </div>
+
+          <div class="p-4 rounded-xl border hover:shadow cursor-pointer" onclick="openPage('students.html?filter=present')">
+            <div class="text-sm text-slate-500">Present Students</div>
+            <div id="presentStudents" class="text-3xl font-bold text-green-600 mt-2">0</div>
+          </div>
+
+          <div class="p-4 rounded-xl border hover:shadow cursor-pointer" onclick="openPage('students.html?filter=absent')">
+            <div class="text-sm text-slate-500">Absent Students</div>
+            <div id="absentStudents" class="text-3xl font-bold text-red-600 mt-2">0</div>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <h3 class="text-lg font-medium text-slate-700">Today's quick actions</h3>
+          <div class="mt-3 flex gap-3">
+            <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg" onclick="openPage('menu.html')">View Menu</button>
+            <button class="px-4 py-2 bg-white border rounded-lg" onclick="openPage('students.html')">Manage Students</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="bg-white rounded-xl p-6 shadow-lg">
+        <h3 class="text-lg font-semibold text-slate-800">Live Menu</h3>
+        <p class="text-sm text-slate-500">Click to open full menu window</p>
+        <div class="mt-4 space-y-3">
+          <div class="flex justify-between items-center bg-gradient-to-r from-indigo-50 to-blue-50 p-3 rounded-lg">
+            <div>
+              <div class="text-sm text-slate-600">Breakfast</div>
+              <div class="font-medium">Idli, Upma, Tea</div>
+            </div>
+            <button class="px-3 py-1 bg-white border rounded" onclick="openPage('menu.html?meal=Breakfast')">Open</button>
+          </div>
+          <div class="flex justify-between items-center bg-gradient-to-r from-amber-50 to-orange-50 p-3 rounded-lg">
+            <div>
+              <div class="text-sm text-slate-600">Lunch</div>
+              <div class="font-medium">Rice, Dal, Veg, Salad</div>
+            </div>
+            <button class="px-3 py-1 bg-white border rounded" onclick="openPage('menu.html?meal=Lunch')">Open</button>
+          </div>
+          <div class="flex justify-between items-center bg-gradient-to-r from-rose-50 to-pink-50 p-3 rounded-lg">
+            <div>
+              <div class="text-sm text-slate-600">Dinner</div>
+              <div class="font-medium">Chapati, Curry, Raita</div>
+            </div>
+            <button class="px-3 py-1 bg-white border rounded" onclick="openPage('menu.html?meal=Dinner')">Open</button>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <h4 class="text-sm text-slate-600">SQL File (backend data)</h4>
+          <p class="text-xs text-slate-500">Local SQL (for reference)</p>
+          <a class="text-indigo-600 text-sm" href="/mnt/data/mess_management_system.sql" target="_blank">mess_management_system.sql</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="mt-8 bg-white rounded-xl p-6 shadow-lg">
+      <h3 class="text-lg font-semibold text-slate-800">Recent Activity</h3>
+      <div id="recentActivity" class="mt-4 space-y-2 text-sm text-slate-600">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    function openPage(url){
+      // Open in new window to simulate separate pages
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  </script>
+</body>
+</html>
